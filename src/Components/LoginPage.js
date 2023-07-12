@@ -2,8 +2,12 @@ import React from 'react';
 import { useState } from "react";
 import axios from 'axios';
 import HomePage from './HomePage';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
+    const notify = () => toast("YOU ARE LOGED IN");
 
     const [isLogin, setisLogin] = useState(false);
 
@@ -17,7 +21,7 @@ function LoginPage() {
             password: PassWord
         }).then((response) => {
             console.log("login", response);
-            alert("YOU ARE LOGED IN")
+            notify();
             setisLogin(true)
         }).catch(error => {
             alert("wrong info");
@@ -27,6 +31,7 @@ function LoginPage() {
 
     return (
         <>
+        <ToastContainer/>
             {
                 isLogin == true ? <HomePage /> : <><div className="container" style={{ justifyContent: "center", top: "50%", left: "50%", transform: "translate(-50%, -50%)", position: "absolute", width: "27%", height: "60%", border: "solid 2px", padding: "2vh" }}>
                     <form className='mt-5'>
@@ -47,7 +52,7 @@ function LoginPage() {
                         </div>
                         <p style={{textAlign:"center",marginTop:"2vh"}}>
 
-                        <a href="#">Create an Account</a>
+                        <Link  to="/CreateAccount">Create an Account</Link>
                         </p>
                     </form>
                 </div></>
