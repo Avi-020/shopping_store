@@ -38,7 +38,7 @@ function HomePage() {
     axios.get(`https://fakestoreapi.com/products/${categaries}`)
       .then(function (response) {
         // handle success
-        console.log("res data",response.data);
+        // console.log("res data",response.data);
         setResData(response.data);
       })
       .catch(function (error) {
@@ -102,7 +102,7 @@ function HomePage() {
                     <img src={i.image} alt="..." height={250} width={250} style={{textAlign:"center",marginLeft:"auto",marginRight:"auto"}}/>
                     <div className="card-body">
                       <h5>$ {i.price}</h5>
-                      <p className="card-text">{i.title}</p>
+                      <p className="card-text">{i.title.slice(0 , 20)}</p>
                       <p>{i.description.slice(0 , 88)}</p>
                       <Link to="/Cart"> 
                       <button type="button" className="btn btn-primary" onClick={() => handleUpdateItem(i.id, i.image, i.price,i.title,i.description)}>Add To Cart</button>

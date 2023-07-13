@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from "react";
 import { CartContext } from '../Context/CartContext';
+import { Link } from 'react-router-dom';
 
 
 
 
 function Cart() {
+  // const[subtotal,setsubtotal]=useState(0);
   
   
   const { cartItems, removeItem, updateItem } = useContext(CartContext);
@@ -18,7 +20,10 @@ function Cart() {
     const updatedItem = { id: itemId, quantity };
     updateItem(itemId, updatedItem);
   };
-
+  // Calculate subtotal price
+  const subtotal = cartItems.reduce((total, item) => {
+    return total + item.quantity * item.price;
+  }, 0);
   return (
     <>
       {cartItems.length === 0 ? (
@@ -34,8 +39,8 @@ function Cart() {
                     <div className="row">
 
                       <div className="col-lg-7">
-                        <h5 className="mb-3"><a href="#!" className="text-body"  ><i
-                          className="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                        <h5 className="mb-3"><Link to="/HomePage" className="text-body"  ><i
+                          className="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</Link></h5>
                         <hr />
 
                         <div className="d-flex justify-content-between align-items-center mb-4">
@@ -70,6 +75,7 @@ function Cart() {
                                   </div>
                                   <div style={{ width: "80px" }}>
                                     <h5 className="mb-0">${item.price}</h5>
+                                    
                                   </div>
                                   <a href="#!" style={{ color: "#cecece" }}><i className="fas fa-trash-alt"></i></a>
                                 </div>
@@ -134,17 +140,17 @@ function Cart() {
 
                             <div className="d-flex justify-content-between">
                               <p className="mb-2">Subtotal</p>
-                              <p className="mb-2">$4798.00</p>
+                              <p className="mb-2">${subtotal}</p>
                             </div>
 
                             <div className="d-flex justify-content-between">
                               <p className="mb-2">Shipping</p>
-                              <p className="mb-2">$20.00</p>
+                              <p className="mb-2">$20</p>
                             </div>
 
                             <div className="d-flex justify-content-between mb-4">
                               <p className="mb-2">Total(Incl. taxes)</p>
-                              <p className="mb-2">$4818.00</p>
+                              <p className="mb-2">${subtotal+20}</p>
                             </div>
 
                             <button type="button" className="btn btn-info btn-block btn-lg">
