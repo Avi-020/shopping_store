@@ -98,7 +98,7 @@ function HomePage() {
 
 
       {/* main content  */}
-      <div className="container mt-5">
+      <div className="container mt-5" style={{marginLeft:"auto",marginRight:"auto"}}>
         <div className="row">
           {Array.isArray(ResData) && ResData.map((i) => {
             return (
