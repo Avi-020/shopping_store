@@ -9,8 +9,11 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
 
+
 function HomePage() {
-  const notify = () => toast("iteam was added in cart");
+  const { cartItems } = useContext(CartContext);
+
+
 
   const [ResData, setResData] = useState([]);
 
@@ -19,8 +22,8 @@ function HomePage() {
   const { addItem } = useContext(CartContext);
 
   const handleUpdateItem = (itemId, image, price,title,des) => {
-    notify();
-    const newItem = {
+    toast("iteam was added in cart");
+        const newItem = {
       id: itemId,
       image,
       price,
@@ -82,9 +85,11 @@ function HomePage() {
         </li>
 
             </ul>
-            <form className="d-flex">
+            <form className="d-flex" style={{position:"relative"}}>
             <Link to="/Cart"> 
               <ShoppingCartIcon sx={{ color: "white"}}  fontSize="large" />
+              <div style={{position:"absolute",top:"0",right:"0", backgroundColor:"white",borderRadius:"50%", height:"20px",width:"20px",textAlign:"center", marginTop:"auto",marginBottom:"auto",color:"black"}} ><b>{cartItems.length}</b></div>
+            
              </Link>
             </form>
           </div>
@@ -104,9 +109,9 @@ function HomePage() {
                       <h5>$ {i.price}</h5>
                       <p className="card-text">{i.title.slice(0 , 20)}</p>
                       <p>{i.description.slice(0 , 88)}</p>
-                      <Link to="/Cart"> 
+                      <button type="button" className="btn btn-primary mx-2" >Buy Now</button>
                       <button type="button" className="btn btn-primary" onClick={() => handleUpdateItem(i.id, i.image, i.price,i.title,i.description)}>Add To Cart</button>
-                      </Link>
+
                     </div>
                   </div>
                 </div>
