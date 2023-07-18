@@ -33,7 +33,8 @@ function LoginPage() {
         <>
         <ToastContainer/>
             {
-                isLogin == true ? <HomePage /> : <><div className="container" style={{ justifyContent: "center", top: "50%", left: "50%", transform: "translate(-50%, -50%)", position: "absolute", width: "27%", height: "60%", border: "solid 2px", padding: "2vh" }}>
+                isLogin == true ? <HomePage /> : <>
+                <div className="container" style={{ justifyContent: "center", top: "50%", left: "50%", transform: "translate(-50%, -50%)", position: "absolute", width: "70%", height: "55%", border: "solid 2px", padding: "2vh" }}>
                     <form className='mt-5'>
                         <div className="mb-3">
                             <label htmlFor="username" className="form-label">User Name</label>

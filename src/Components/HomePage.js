@@ -98,8 +98,8 @@ function HomePage() {
 
 
       {/* main content  */}
-      <div className="container mt-5" style={{marginLeft:"auto",marginRight:"auto"}}>
-        <div className="row">
+      <div className="container mt-5" style={{alignItems:"center",justifyContent:"center"}}>
+        <div className="row" style={{marginLeft:"auto",marginRight:"auto" , justifyContent:"center"}}>
           {Array.isArray(ResData) && ResData.map((i) => {
             return (
                 <div className="col mb-4 mr-5" key={i.id}  >
