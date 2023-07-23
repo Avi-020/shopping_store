@@ -8,12 +8,11 @@ import { CartProvider } from './Context/CartContext';
 function App() {
 
   return (
-    
-<CartProvider>
 
-<Routing/>
-</CartProvider>
-    
+    <CartProvider>
+      <Routing />
+    </CartProvider>
+
 
   );
 }

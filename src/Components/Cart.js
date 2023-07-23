@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useContext } from "react";
 import { CartContext } from '../Context/CartContext';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 
@@ -26,6 +28,8 @@ function Cart() {
   }, 0);
   return (
     <>
+        <ToastContainer />
+
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) :
@@ -154,7 +158,7 @@ function Cart() {
                             </div>
 
                             <button type="button" className="btn btn-info btn-block btn-lg">
-                              <div className="d-flex justify-content-between">
+                              <div className="d-flex justify-content-between" onClick={()=>{toast("YOUR ORDER DELIVER SOON !")}}>
                                 <span>Checkout <i className="fas fa-long-arrow-alt-right ms-2"></i></span>
                               </div>
                             </button>

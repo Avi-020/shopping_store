@@ -109,7 +109,9 @@ function HomePage() {
                       <h5>$ {i.price}</h5>
                       <p className="card-text">{i.title.slice(0 , 20)}</p>
                       <p>{i.description.slice(0 , 88)}</p>
-                      <button type="button" className="btn btn-primary mx-2" >Buy Now</button>
+                      <Link to="/Cart"> 
+                      <button type="button" className="btn btn-primary mx-2" onClick={() => handleUpdateItem(i.id, i.image, i.price,i.title,i.description)}>Buy Now</button>
+                      </Link>
                       <button type="button" className="btn btn-primary" onClick={() => handleUpdateItem(i.id, i.image, i.price,i.title,i.description)}>Add To Cart</button>
 
                     </div>
